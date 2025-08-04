@@ -1,3 +1,25 @@
-# Godot 4+ specific ignores
+# Godot-specific
+.import/
+*.uid
+.export/
+export.cfg
+export_presets.cfg
+
+# User-specific
 .godot/
-/android/
+*.tmp
+*.log
+
+# OS/Editor junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# VS Code (optional, if you're using it)
+.vscode/
+
+# Linux/macOS hidden files
+*.swp
+*.swo
+*.swn
+

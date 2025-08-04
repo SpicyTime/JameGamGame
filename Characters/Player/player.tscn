@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7wyqbpsaodsw"]
+
+[ext_resource type="Script" uid="uid://b3e5gbv0rddce" path="res://Characters/Player/player.gd" id="1_mv1ah"]
+[ext_resource type="Texture2D" uid="uid://1qyxn72dcehc" path="res://Characters/Player/Bucket.png" id="2_j341n"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ix6vc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mv1ah"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_mv1ah")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_ix6vc")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_j341n")
+
+[node name="PickupArea" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
+shape = SubResource("RectangleShape2D_mv1ah")
+
+[connection signal="body_entered" from="PickupArea" to="." method="_on_pickup_area_body_entered"]

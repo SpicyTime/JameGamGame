@@ -1,13 +1,12 @@
-[gd_resource type="Resource" script_class="FallingObjectData" load_steps=4 format=3 uid="uid://d3g1jotjsbqed"]
+[gd_resource type="Resource" script_class="FallingObjectData" load_steps=3 format=3 uid="uid://d3g1jotjsbqed"]
 
-[ext_resource type="Resource" uid="uid://cdt1b8mug27mj" path="res://Characters/Creature/Creatures/dwarf.tres" id="1_ake5q"]
 [ext_resource type="Script" uid="uid://dhegdgr0up1s1" path="res://Object/falling_object_data.gd" id="1_id30e"]
 [ext_resource type="Texture2D" uid="uid://g5bop42rk88a" path="res://Object/Objects/Textures/HeadLamp.png" id="3_rlsmb"]
 
 [resource]
 script = ExtResource("1_id30e")
-name = ""
-associated_creature = ExtResource("1_ake5q")
+name = "HeadLamp"
+associated_creature = "Dwarf"
 fall_speed = 980.0
 texture = ExtResource("3_rlsmb")
 metadata/_custom_type_script = "uid://dhegdgr0up1s1"

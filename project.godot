@@ -20,6 +20,11 @@ config/icon="res://icon.svg"
 CreatureUiManager="*res://Game/creature_ui_manager.gd"
 ScreenManager="*res://Game/screen_manager.gd"
 SignalBus="*res://Game/signal_bus.gd"
+GameManager="*res://Game/game_manager.gd"
+
+[debug]
+
+gdscript/warnings/unused_signal=0
 
 [display]
 

@@ -8,35 +8,19 @@ func _process(delta: float) -> void:
 	
 func _ready() -> void:
 	SignalBus.screen_swapped.connect(_on_screen_swapped)
-	var folder_path: String = "res://Object/Objects"
-	var object_folder = DirAccess.open(folder_path)
-	if object_folder:
-		object_folder.list_dir_begin()
-		var file_name = object_folder.get_next()
-		while file_name != "":
-			if file_name == "." or file_name == ".." or object_folder.current_is_dir():
-				file_name = object_folder.get_next()
-				continue
-			var full_path: String = folder_path + "/" + file_name
-			
-			var scene: FallingObjectData = load(full_path)
-			
-			if scene:
-				objects.append(scene)
-			else:
-				print("Failed to load resource: ", full_path)
-			file_name = object_folder.get_next()
-
+		
+		
 func show_screen() -> void:
 	visible = true
 	
 func hide_screen() -> void:
 	visible = false
+	print("Hiding Game")
 	
 func _on_screen_swapped(screen) -> void:
 	if screen == self:
 		SignalBus.start_spawning.emit()
-		
+		game_timer.start()
 	else:
 		SignalBus.stop_spawning.emit()
 

@@ -37,6 +37,7 @@ position = Vector2(120, -94)
 position = Vector2(-58, -102)
 
 [node name="GameTimer" type="Timer" parent="."]
+wait_time = 30.0
 one_shot = true
 
 [connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]

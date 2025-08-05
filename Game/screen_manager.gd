@@ -1,15 +1,18 @@
 extends Node
 
 var PRE_ROUND_MENU = preload("res://Ui/Screens/pre_round_menu.tscn").instantiate()
+var POST_ROUND_MENU = preload("res://Ui/Screens/post_round_menu.tscn").instantiate()
 var GAME_OVER_MENU = preload("res://Ui/Screens/game_over_menu.tscn").instantiate()
 var MAIN_MENU = preload("res://Ui/Screens/main_menu.tscn").instantiate()
 var PAUSE_MENU = preload("res://Ui/Screens/pause_menu.tscn").instantiate()
 var SETTINGS_MENU = preload("res://Ui/Screens/settings_menu.tscn").instantiate()
 var GAME = preload("res://Game/game.tscn").instantiate()
 
+
 var screens: Dictionary = {
 	"PreRoundMenu": PRE_ROUND_MENU,
 	"GameOverMenu": GAME_OVER_MENU,
+	"PostRoundMenu": POST_ROUND_MENU,
 	"MainMenu": MAIN_MENU,
 	"PauseMenu": PAUSE_MENU,
 	"SettingsMenu": SETTINGS_MENU,

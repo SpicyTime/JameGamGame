@@ -1,11 +1,12 @@
 [gd_resource type="Resource" script_class="FallingObjectData" load_steps=3 format=3 uid="uid://c8xlgattag02g"]
 
-[ext_resource type="Resource" uid="uid://cdt1b8mug27mj" path="res://Characters/Creature/Creatures/dwarf.tres" id="1_daxoq"]
 [ext_resource type="Script" uid="uid://dhegdgr0up1s1" path="res://Object/falling_object_data.gd" id="1_xj3lv"]
+[ext_resource type="Texture2D" uid="uid://dkulsjkx05g37" path="res://Object/Objects/Textures/Anvil.png" id="2_daxoq"]
 
 [resource]
 script = ExtResource("1_xj3lv")
-name = ""
-associated_creature = ExtResource("1_daxoq")
+name = "Anvil"
+associated_creature = "Dwarf"
 fall_speed = 980.0
+texture = ExtResource("2_daxoq")
 metadata/_custom_type_script = "uid://dhegdgr0up1s1"

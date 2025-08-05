@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://5lu5qm335erl"]
 
 [ext_resource type="Script" uid="uid://cp12bjw2qdyfv" path="res://Ui/Screens/post_round_menu.gd" id="1_wu7fb"]
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_mncwb"]
+[ext_resource type="Texture2D" uid="uid://dwfnm2hsocyow" path="res://Characters/Creature/Textures/Dwarf.png" id="2_x7bqm"]
 
 [node name="PostRoundMenu" type="Control"]
+process_mode = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,25 +24,14 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Panel" type="Panel" parent="CanvasLayer/Control"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -101.0
-offset_top = -75.0
-offset_right = 101.0
-offset_bottom = 80.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/Panel"]
+[node name="CharacterTexture" type="TextureRect" parent="CanvasLayer/Control"]
 custom_minimum_size = Vector2(100, 70)
 layout_mode = 1
 anchors_preset = 8
@@ -51,27 +40,74 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -71.0
-offset_top = -64.5
+offset_top = -62.0
 offset_right = 71.0
-offset_bottom = 5.5
+offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-texture = SubResource("ViewportTexture_mncwb")
+texture = ExtResource("2_x7bqm")
 
-[node name="Button" type="Button" parent="CanvasLayer/Control/Panel"]
+[node name="Button" type="Button" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -39.5
-offset_top = -31.0
-offset_right = 39.5
+offset_left = -60.0
+offset_top = -34.0
+offset_right = 58.0
+offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 8
 size_flags_vertical = 8
 text = "Next Creature"
+
+[node name="CorrectItems" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 101.0
+offset_right = 123.0
+offset_bottom = 124.0
+text = "Correct Amount"
+
+[node name="CorrectNum" type="Label" parent="CanvasLayer/Control/CorrectItems"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -2.0
+offset_right = 20.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="IncorrectItems" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 182.0
+offset_top = 102.0
+offset_right = 319.0
+offset_bottom = 125.0
+text = "Incorrect Amount"
+
+[node name="IncorrectNum" type="Label" parent="CanvasLayer/Control/IncorrectItems"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -22.5
+offset_top = -4.0
+offset_right = 17.5
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[connection signal="pressed" from="CanvasLayer/Control/Button" to="." method="_on_button_pressed"]

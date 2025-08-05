@@ -1,14 +1,19 @@
-[gd_resource type="Resource" script_class="CreatureData" load_steps=4 format=3 uid="uid://d0iaby3qioa1t"]
+[gd_resource type="Resource" script_class="CreatureData" load_steps=9 format=3 uid="uid://d0iaby3qioa1t"]
 
 [ext_resource type="Script" uid="uid://bcvyjp5yh2y50" path="res://Characters/Creature/creature_data.gd" id="1_1863g"]
 [ext_resource type="Script" uid="uid://dhegdgr0up1s1" path="res://Object/falling_object_data.gd" id="1_n6kcb"]
+[ext_resource type="Resource" uid="uid://cwqbv2q0abkl5" path="res://Object/Objects/amulet.tres" id="2_7sodk"]
+[ext_resource type="Resource" uid="uid://gflhdtf2jdh" path="res://Object/Objects/cauldron.tres" id="3_5m4g5"]
 [ext_resource type="Texture2D" uid="uid://d1ydunvqbacdo" path="res://Characters/Creature/Textures/Wizard.png" id="3_vpmvy"]
+[ext_resource type="Resource" uid="uid://iwhny0hv4c3h" path="res://Object/Objects/crystal_ball.tres" id="4_vf6oh"]
+[ext_resource type="Resource" uid="uid://bqu72746oh43p" path="res://Object/Objects/wand.tres" id="5_yjskm"]
+[ext_resource type="Resource" uid="uid://bfqyca5pkjp7f" path="res://Object/Objects/wizard_hat.tres" id="6_1x8gx"]
 
 [resource]
 script = ExtResource("1_1863g")
-name = ""
-appearance_weight = 0.2
+name = "Wizard"
+appearance_weight = 0.5
 texture = ExtResource("3_vpmvy")
-associated_items = Array[ExtResource("1_n6kcb")]([])
-correct_items_required = 0
-incorrect_items_allowed = 0
+associated_items = Array[ExtResource("1_n6kcb")]([ExtResource("2_7sodk"), ExtResource("3_5m4g5"), ExtResource("4_vf6oh"), ExtResource("5_yjskm"), ExtResource("6_1x8gx")])
+correct_range = Vector2(2, 5)
+incorrect_range = Vector2(9, 6)

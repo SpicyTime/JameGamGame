@@ -1,0 +1,101 @@
+[gd_scene load_steps=3 format=3 uid="uid://db5mkgp7blp6t"]
+
+[ext_resource type="Script" uid="uid://2s6gjalcb4n4" path="res://Ui/Screens/pre_round_menu.gd" id="1_o8eaa"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_k7f0f"]
+
+[node name="PreRoundMenu" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o8eaa")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -101.0
+offset_top = -75.0
+offset_right = 101.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/Panel"]
+custom_minimum_size = Vector2(100, 70)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -71.0
+offset_top = -64.5
+offset_right = 71.0
+offset_bottom = 5.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = SubResource("ViewportTexture_k7f0f")
+
+[node name="Button" type="Button" parent="CanvasLayer/Control/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -39.5
+offset_top = -31.0
+offset_right = 39.5
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "Start"
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.0
+offset_top = 10.0
+offset_right = 60.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Accepted Items"
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Control/Label"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 3
+
+[connection signal="pressed" from="CanvasLayer/Control/Panel/Button" to="." method="_on_button_pressed"]

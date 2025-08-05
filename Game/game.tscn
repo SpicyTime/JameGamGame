@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ctekgk32jlsdg"]
 
-[ext_resource type="Script" uid="uid://cfel8b8un6cpm" path="res://Game/game.gd" id="1_1r4le"]
+[ext_resource type="Script" uid="uid://dx1ope3etr23g" path="res://Game/game.gd" id="1_1r4le"]
 [ext_resource type="PackedScene" uid="uid://c7wyqbpsaodsw" path="res://Characters/Player/player.tscn" id="1_bk3v5"]
 [ext_resource type="PackedScene" uid="uid://cbxpwgesyv4v3" path="res://Object/object_spawner.tscn" id="3_7raqb"]
 
@@ -12,6 +12,31 @@ script = ExtResource("1_1r4le")
 [node name="Player" parent="." instance=ExtResource("1_bk3v5")]
 position = Vector2(0, 70)
 
-[node name="ObjectSpawner" parent="." node_paths=PackedStringArray("game") instance=ExtResource("3_7raqb")]
+[node name="ObjectSpawner" parent="." instance=ExtResource("3_7raqb")]
 position = Vector2(0, -106)
-game = NodePath("..")
+
+[node name="ObjectSpawner2" parent="." instance=ExtResource("3_7raqb")]
+position = Vector2(-103, -106)
+
+[node name="ObjectSpawner3" parent="." instance=ExtResource("3_7raqb")]
+position = Vector2(80, -105)
+
+[node name="ObjectSpawner4" parent="." instance=ExtResource("3_7raqb")]
+position = Vector2(41, -108)
+
+[node name="ObjectSpawner5" parent="." instance=ExtResource("3_7raqb")]
+position = Vector2(-19, -104)
+
+[node name="ObjectSpawner6" parent="." instance=ExtResource("3_7raqb")]
+position = Vector2(-133, -101)
+
+[node name="ObjectSpawner7" parent="." instance=ExtResource("3_7raqb")]
+position = Vector2(120, -94)
+
+[node name="ObjectSpawner8" parent="." instance=ExtResource("3_7raqb")]
+position = Vector2(-58, -102)
+
+[node name="GameTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]

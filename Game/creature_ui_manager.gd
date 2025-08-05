@@ -13,15 +13,14 @@ func _ready() -> void:
 		var filename: String = creature_folder.get_next()
 		while filename != "":
 			var full_path: String = folder_path + "/" + filename
-			print(full_path)
 			var scene: CreatureData = load(full_path)
-			print(load(full_path))
 			if scene:
 				creatures_datas.append(scene)
 			else:
 				print("Failed to load creature")
 			filename = creature_folder.get_next()
 	calc_total_weight()
+	
 func check_bucket() -> void: 
 	var bucket_item_counts: Dictionary[String, int] = player.held_item_counts
 	var creature_items: Array[FallingObjectData] = current_creature_data.associated_items
@@ -51,6 +50,8 @@ func pick_creature() -> CreatureData:
 	for weight in creature_weights:
 		rand_float -= weight
 		if rand_float <= 0:
-			return creature_weights[weight]
+			var picked_creature = creature_weights[weight]
+			current_creature_data = picked_creature
+			return picked_creature
 	return null
 	

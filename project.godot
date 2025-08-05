@@ -11,13 +11,15 @@ config_version=5
 [application]
 
 config/name="JameGamGame"
-run/main_scene="res://Game/game.tscn"
+run/main_scene="uid://bic6cupuo8eix"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 CreatureUiManager="*res://Game/creature_ui_manager.gd"
+ScreenManager="*res://Game/screen_manager.gd"
+SignalBus="*res://Game/signal_bus.gd"
 
 [display]
 

@@ -3,8 +3,8 @@ class_name Player
 var held_item_counts: Dictionary [String, int] = {}
 var input_vector: Vector2 = Vector2.ZERO
 var friction: float = 1000
-var accel: float = 1000.0
-var max_speed: float = 300.0
+var accel: float = 700.0
+var max_speed: float = 125.0
 
 func _handle_input() -> void:
 	input_vector = Vector2.ZERO
@@ -15,6 +15,7 @@ func _handle_input() -> void:
 		
 func _ready() -> void:
 	CreatureUiManager.player = self
+	
 func _physics_process(delta: float) -> void:
 	_handle_input()
 	

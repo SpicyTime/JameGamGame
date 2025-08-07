@@ -6,8 +6,9 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ix6vc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mv1ah"]
+size = Vector2(20, 4)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["ItemEffected"]]
 script = ExtResource("1_mv1ah")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -21,6 +22,7 @@ texture = ExtResource("2_j341n")
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
+position = Vector2(1, -4)
 shape = SubResource("RectangleShape2D_mv1ah")
 
 [connection signal="body_entered" from="PickupArea" to="." method="_on_pickup_area_body_entered"]

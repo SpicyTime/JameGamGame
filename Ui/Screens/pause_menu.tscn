@@ -1,9 +1,118 @@
-[gd_scene format=3 uid="uid://dapv5hofl8dm1"]
+[gd_scene load_steps=4 format=3 uid="uid://dapv5hofl8dm1"]
+
+[ext_resource type="Script" uid="uid://boc85u1ufnykb" path="res://Ui/Screens/pause_menu.gd" id="1_cs4wv"]
+[ext_resource type="Theme" uid="uid://dekeeobkykipg" path="res://Themes/Button.tres" id="2_i5ny4"]
+
+[sub_resource type="Theme" id="Theme_07qt0"]
 
 [node name="PauseMenu" type="Control"]
+process_mode = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_cs4wv")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -107.0
+offset_top = -75.0
+offset_right = 107.0
+offset_bottom = 76.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_07qt0")
+
+[node name="CurrentCreature" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 19.0
+offset_right = 20.0
+offset_bottom = 59.0
+grow_horizontal = 2
+
+[node name="SFXSliderLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 68.0
+offset_right = 112.0
+offset_bottom = 82.0
+theme_override_font_sizes/font_size = 10
+text = "SFX"
+
+[node name="SFXController" type="HSlider" parent="Panel/SFXSliderLabel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -3.0
+offset_right = -42.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+
+[node name="MusicSliderLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 91.0
+offset_top = 92.0
+offset_right = 120.0
+offset_bottom = 106.0
+theme_override_font_sizes/font_size = 10
+text = "Music"
+
+[node name="MusicController" type="HSlider" parent="Panel/MusicSliderLabel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_top = -1.0
+offset_right = -44.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+
+[node name="BackToGameButton" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -25.0
+offset_right = 24.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_i5ny4")
+theme_override_font_sizes/font_size = 12
+text = "Resume"
+
+[node name="CurrentCreatureLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 6.0
+offset_right = 141.0
+offset_bottom = 29.0
+theme_override_font_sizes/font_size = 8
+text = "Current Creature"
+
+[connection signal="pressed" from="Panel/BackToGameButton" to="." method="_on_back_to_game_button_pressed"]

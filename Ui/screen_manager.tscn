@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bic6cupuo8eix"]
+
+[ext_resource type="Script" uid="uid://dwmlksspsiruv" path="res://Ui/screen_manager.gd" id="1_uncux"]
+
+[node name="ScreenManager" type="Node"]
+script = ExtResource("1_uncux")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]

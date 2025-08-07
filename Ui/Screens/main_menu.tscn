@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://cs547qppk5go0"]
+[gd_scene load_steps=4 format=3 uid="uid://cs547qppk5go0"]
 
 [ext_resource type="Script" uid="uid://denpf4eqar8qq" path="res://Ui/Screens/main_menu.gd" id="1_1ig6n"]
+[ext_resource type="Texture2D" uid="uid://c3ygrchei8a0g" path="res://Game/Counter.png" id="2_2bw1q"]
+[ext_resource type="Theme" uid="uid://dekeeobkykipg" path="res://Themes/Button.tres" id="2_3jlfg"]
 
 [node name="MainMenu" type="Control"]
 process_mode = 2
@@ -12,47 +14,40 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1ig6n")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Control" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_2bw1q")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -35.0
+offset_top = -33.0
+offset_right = 35.0
+offset_bottom = 33.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PlayButton" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+[node name="PlayButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_3jlfg")
 text = "Play"
 
-[node name="SettingsButton" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+[node name="SettingsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_3jlfg")
 text = "Settings"
 
-[node name="Label" type="Label" parent="CanvasLayer/Control"]
+[node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -61,7 +56,9 @@ offset_left = -64.5
 offset_right = 64.5
 offset_bottom = 23.0
 grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
 text = "Jame Gam Game"
 
-[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]

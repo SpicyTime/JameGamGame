@@ -1,0 +1,39 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://dekeeobkykipg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_og88e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_og88e"]
+bg_color = Color(1, 0.147142, 0.0481679, 1)
+border_width_bottom = 5
+border_color = Color(0.919281, 4.47616e-06, 1.15514e-06, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xl6ml"]
+bg_color = Color(0.945098, 0.0784314, 0, 1)
+border_width_bottom = 5
+border_color = Color(0.619608, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3uj03"]
+bg_color = Color(0.913725, 0.0784314, 0, 1)
+border_width_bottom = 5
+border_color = Color(0.531147, 1.01075e-06, 9.62615e-08, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[resource]
+Button/styles/focus = SubResource("StyleBoxEmpty_og88e")
+Button/styles/hover = SubResource("StyleBoxFlat_og88e")
+Button/styles/normal = SubResource("StyleBoxFlat_xl6ml")
+Button/styles/pressed = SubResource("StyleBoxFlat_3uj03")

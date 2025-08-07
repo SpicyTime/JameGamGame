@@ -14,7 +14,6 @@ func setup(curr_data: FallingObjectData):
 
 func _physics_process(delta: float) -> void:
 	if data:
-		
 		velocity.y = 980 * delta * GameManager.fall_speed_accel
 	if global_position.y > get_viewport_rect().size.y / 2:
 		queue_free()

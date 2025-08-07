@@ -2,7 +2,6 @@ extends Node2D
 @onready var delay_timer: Timer = $DelayTimer
 
 var spawn_speed: float = 0.0
-@onready var game = get_parent()
 var spawn_length: float = 30
 var min_spawn_delay: float = 0.3
 var can_spawn: bool = false
@@ -27,7 +26,7 @@ func pick_position() -> int:
 func pick_from_list(array: Array) -> FallingObject:
 	var index_range = Vector2(0, array.size() - 1)
 	var rand_index = randi_range(index_range.x, index_range.y)
-	var object_data: FallingObjectData = game.objects[rand_index]
+	var object_data: FallingObjectData = GameManager.objects[rand_index]
 	var falling_object: FallingObject = preload("res://Object/falling_object.tscn").instantiate()
 	falling_object.set_data(object_data)
 	return falling_object
@@ -36,7 +35,7 @@ func pick_rand_object() -> FallingObject:
 	var current_creature_object_rand: float = randf()
 	
 	if current_creature_object_rand <= 0.83:
-		return pick_from_list(game.objects)
+		return pick_from_list(GameManager.objects)
 	else:
 		return pick_from_list(CreatureUiManager.current_creature_data.associated_items)
 

@@ -1,0 +1,104 @@
+[gd_scene load_steps=4 format=3 uid="uid://c24c8cimdeafp"]
+
+[ext_resource type="Script" uid="uid://c1a8v8h8qim1k" path="res://Ui/shop_overlay.gd" id="1_qcukf"]
+[ext_resource type="PackedScene" uid="uid://1afeklw6eo37" path="res://Ui/shop_item.tscn" id="2_1rmmy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f56cg"]
+bg_color = Color(0.890432, 0.625998, 0.462548, 1)
+border_width_left = 4
+border_width_top = 8
+border_width_right = 4
+border_width_bottom = 3
+border_color = Color(0.709882, 0.44164, 0.265353, 1)
+
+[node name="ShopMenu" type="Control"]
+process_mode = 2
+z_index = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qcukf")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -127.0
+offset_top = -70.0
+offset_right = 127.0
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f56cg")
+
+[node name="GridContainer" type="GridContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -113.5
+offset_top = -45.5
+offset_right = 113.5
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="BucketSpeed" parent="Panel/GridContainer" instance=ExtResource("2_1rmmy")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+item_name = "Bucket Speed "
+description = "Increases the buckets movespeed by x%"
+item_type = 1
+tier_count = 3
+tier_effects = Array[float]([1.2, 1.5, 2.0])
+tier_costs = Array[int]([5, 8, 16])
+
+[node name="BucketSize" parent="Panel/GridContainer" instance=ExtResource("2_1rmmy")]
+layout_mode = 2
+item_name = "Bucket Size "
+description = "Makes the bucket bigger."
+tier_count = 3
+tier_effects = Array[float]([8.0, 12.0, 18.0])
+tier_costs = Array[int]([0, 0, 0])
+
+[node name="BucketFilter" parent="Panel/GridContainer" instance=ExtResource("2_1rmmy")]
+layout_mode = 2
+item_name = "Bucket Filter "
+description = "x% chance to reject an incorrect item"
+item_type = 2
+tier_count = 3
+tier_effects = Array[float]([0.15, 0.3, 0.5])
+tier_costs = Array[int]([0, 0, 0])
+
+[node name="ItemDescriptionLabel" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 8
+
+[node name="ExitButton" type="Button" parent="Panel"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 0
+offset_left = 235.0
+offset_top = 8.0
+offset_right = 250.0
+offset_bottom = 23.0
+
+[connection signal="pressed" from="Panel/ExitButton" to="." method="_on_exit_button_pressed"]

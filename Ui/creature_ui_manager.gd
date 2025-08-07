@@ -2,7 +2,7 @@ extends Node
 var current_creature_data: CreatureData = null
 var creatures_datas: Array[CreatureData]
 var creature_weights: Dictionary[float, CreatureData]
-var player: Player = null
+
 var total_weight: float = 0.0
 
 func load_creatures() -> void:
@@ -35,7 +35,7 @@ func load_objects() -> void:
 			var scene: FallingObjectData = load(full_path)
 			
 			if scene:
-				ScreenManager.GAME.objects.append(scene)
+				GameManager.objects.append(scene)
 			else:
 				print("Failed to load resource: ", full_path)
 			file_name = object_folder.get_next()
@@ -43,26 +43,6 @@ func _ready() -> void:
 	load_objects()
 	load_creatures()
 	
-func check_bucket() -> Vector2:
-	var bucket_item_counts: Dictionary[String, int] = player.held_item_counts
-	var correct_item_count: int = 0
-	var incorrect_item_count: int = 0
-
-	# Check each item the player is holding
-	for creature_name in bucket_item_counts.keys():
-		var count = bucket_item_counts[creature_name]
-		print(creature_name, current_creature_data.name)
-		if creature_name == current_creature_data.name:
-			correct_item_count += count
-		else:
-			incorrect_item_count += count
-
-	# Debug print (optional)
-	print("Correct:", correct_item_count, " Incorrect:", incorrect_item_count)
-	return Vector2(correct_item_count, incorrect_item_count)
-			
-func successful_haul(correct_count: int, incorrect_count: int) -> bool:
-	return correct_count >= current_creature_data.correct_items_required and (incorrect_count < current_creature_data.error_tolerance)
 func calc_total_weight() -> void:
 	total_weight = 0.0
 	for creatures_data in creatures_datas:

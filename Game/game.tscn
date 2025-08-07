@@ -1,11 +1,69 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctekgk32jlsdg"]
+[gd_scene load_steps=13 format=3 uid="uid://ctekgk32jlsdg"]
 
 [ext_resource type="Script" uid="uid://dx1ope3etr23g" path="res://Game/game.gd" id="1_1r4le"]
 [ext_resource type="PackedScene" uid="uid://c7wyqbpsaodsw" path="res://Characters/Player/player.tscn" id="1_bk3v5"]
+[ext_resource type="Texture2D" uid="uid://cjye8n4wu3kfw" path="res://Game/WaterFall-sheet.png" id="2_jcm6v"]
 [ext_resource type="PackedScene" uid="uid://cbxpwgesyv4v3" path="res://Object/object_spawner.tscn" id="3_7raqb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwxkx"]
+atlas = ExtResource("2_jcm6v")
+region = Rect2(0, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qmv3x"]
+atlas = ExtResource("2_jcm6v")
+region = Rect2(320, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oomkl"]
+atlas = ExtResource("2_jcm6v")
+region = Rect2(640, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_buohc"]
+atlas = ExtResource("2_jcm6v")
+region = Rect2(960, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kul4i"]
+atlas = ExtResource("2_jcm6v")
+region = Rect2(1280, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gi1t"]
+atlas = ExtResource("2_jcm6v")
+region = Rect2(1600, 0, 320, 180)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fsxsm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwxkx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qmv3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oomkl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_buohc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kul4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7gi1t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jcm6v"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_1r4le")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_fsxsm")
+autoplay = "default"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -39,5 +97,20 @@ position = Vector2(-58, -102)
 [node name="GameTimer" type="Timer" parent="."]
 wait_time = 30.0
 one_shot = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-160, 0)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_jcm6v")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+rotation = 3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(-160, 0)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_jcm6v")
 
 [connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]

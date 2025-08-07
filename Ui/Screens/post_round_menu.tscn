@@ -13,17 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wu7fb")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Control" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,7 +21,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CharacterTexture" type="TextureRect" parent="CanvasLayer/Control"]
+[node name="CharacterTexture" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(100, 70)
 layout_mode = 1
 anchors_preset = 8
@@ -49,7 +39,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 texture = ExtResource("2_x7bqm")
 
-[node name="Button" type="Button" parent="CanvasLayer/Control"]
+[node name="Button" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -66,7 +56,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 8
 text = "Next Creature"
 
-[node name="CorrectItems" type="Label" parent="CanvasLayer/Control"]
+[node name="CorrectItems" type="Label" parent="."]
 layout_mode = 0
 offset_left = -1.0
 offset_top = 101.0
@@ -74,7 +64,7 @@ offset_right = 123.0
 offset_bottom = 124.0
 text = "Correct Amount"
 
-[node name="CorrectNum" type="Label" parent="CanvasLayer/Control/CorrectItems"]
+[node name="CorrectNum" type="Label" parent="CorrectItems"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -88,7 +78,7 @@ offset_bottom = 21.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="IncorrectItems" type="Label" parent="CanvasLayer/Control"]
+[node name="IncorrectItems" type="Label" parent="."]
 layout_mode = 0
 offset_left = 182.0
 offset_top = 102.0
@@ -96,7 +86,7 @@ offset_right = 319.0
 offset_bottom = 125.0
 text = "Incorrect Amount"
 
-[node name="IncorrectNum" type="Label" parent="CanvasLayer/Control/IncorrectItems"]
+[node name="IncorrectNum" type="Label" parent="IncorrectItems"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -110,4 +100,4 @@ offset_bottom = 19.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[connection signal="pressed" from="CanvasLayer/Control/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -12,9 +12,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jeegg")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Button" type="Button" parent="CanvasLayer"]
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -28,7 +27,8 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Back to menu"
 
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -38,4 +38,4 @@ offset_bottom = 23.0
 grow_horizontal = 2
 text = "You are dead"
 
-[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

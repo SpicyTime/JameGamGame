@@ -1,24 +1,14 @@
 extends Control
-@onready var character_texture: TextureRect = $CanvasLayer/Control/CharacterTexture
-@onready var grid_container: GridContainer = $CanvasLayer/Control/AcceptableItemLabel/GridContainer
-@onready var required_amount_label: Label = $CanvasLayer/Control/RequiredLabel/RequiredAmountLabel
-@onready var error_tolerance_amount_label: Label = $CanvasLayer/Control/ErrorToleranceLabel/ErrorToleranceAmountLabel
+@onready var character_texture: TextureRect = $CharacterTexture
+@onready var grid_container: GridContainer = $AcceptableItemLabel/GridContainer
+@onready var required_amount_label: Label = $Panel/RequiredLabel/RequiredAmountLabel
+@onready var error_tolerance_amount_label: Label = $Panel2/ErrorToleranceLabel/ErrorToleranceAmountLabel
+var screen_manager: Node = null
 
 
 func _ready() -> void:
 	SignalBus.screen_swapped.connect(_on_screen_swapped)
 	
-func hide_screen() -> void:
-	$CanvasLayer.visible = false
-	
-func show_screen() -> void:
-	$CanvasLayer.visible = true
-
-func _on_button_pressed() -> void:
-	ScreenManager.swap_to("Game")
-	GameManager.fall_speed_accel += GameManager.fall_speed_accel * 0.035
-	GameManager.max_spawn_delay  *= 0.9
-			
 func _on_screen_swapped(screen) -> void:
 	if screen == self:
 		var current_creature = CreatureUiManager.pick_creature()
@@ -32,3 +22,11 @@ func _on_screen_swapped(screen) -> void:
 			required_amount_label.text = str(current_creature.correct_items_required)
 			error_tolerance_amount_label.text = str(current_creature.error_tolerance)
 			
+func _on_start_game_pressed() -> void:
+	screen_manager.swap_to("Game")
+	GameManager.fall_speed_accel += GameManager.fall_speed_accel * 0.035
+	GameManager.max_spawn_delay  *= 0.9
+
+
+func _on_shop_button_pressed() -> void:
+	screen_manager.show_overlay("ShopOverlay")

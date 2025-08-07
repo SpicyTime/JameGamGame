@@ -1,16 +1,9 @@
 extends Control
-
-func hide_screen() -> void:
-	$CanvasLayer.visible = false
+var screen_manager: Node = null
 	
-	#print("Hiding Menu")
-	
-func show_screen() -> void:
-	$CanvasLayer.visible = true
-	#print("Shiowing Menu")
 func _on_play_button_pressed() -> void:
-	ScreenManager.swap_to("PreRoundMenu")
+	screen_manager.swap_to("PreRoundMenu")
 
 
 func _on_settings_button_pressed() -> void:
-	ScreenManager.swap_to("SettingsMenu")
+	screen_manager.swap_to("SettingsMenu")

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="FallingObjectData" load_steps=3 format=3 uid="uid://dlj0ptc75sgqs"]
+
+[ext_resource type="Script" uid="uid://dhegdgr0up1s1" path="res://Object/falling_object_data.gd" id="1_wwoud"]
+[ext_resource type="Texture2D" uid="uid://dsjsvjcft2u5g" path="res://Object/Objects/Textures/Coral.png" id="2_46aqa"]
+
+[resource]
+script = ExtResource("1_wwoud")
+name = "Coral"
+associated_creature = "Mermaid"
+fall_speed = 980.0
+texture = ExtResource("2_46aqa")
+metadata/_custom_type_script = "uid://dhegdgr0up1s1"

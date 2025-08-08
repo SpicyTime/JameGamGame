@@ -58,6 +58,21 @@ theme = ExtResource("3_sh86c")
 theme_override_font_sizes/font_size = 10
 text = "Start"
 
+[node name="ShopButton" type="Button" parent="."]
+custom_minimum_size = Vector2(50, 10)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -29.0
+offset_right = 50.0
+offset_bottom = -10.0
+grow_vertical = 0
+theme = ExtResource("3_sh86c")
+theme_override_font_sizes/font_size = 10
+text = "Shop
+"
+
 [node name="AcceptableItemLabel" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -83,7 +98,7 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 5
 
-[node name="Panel" type="Panel" parent="."]
+[node name="RequiredSheet" type="Panel" parent="."]
 custom_minimum_size = Vector2(0, 27)
 layout_mode = 0
 offset_left = 24.0
@@ -92,7 +107,7 @@ offset_right = 79.0
 offset_bottom = 147.0
 theme = ExtResource("5_fj3in")
 
-[node name="RequiredLabel" type="Label" parent="Panel"]
+[node name="RequiredLabel" type="Label" parent="RequiredSheet"]
 layout_mode = 0
 offset_left = 4.0
 offset_right = 48.0
@@ -101,7 +116,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
 text = "Required"
 
-[node name="RequiredAmountLabel" type="Label" parent="Panel/RequiredLabel"]
+[node name="RequiredAmountLabel" type="Label" parent="RequiredSheet/RequiredLabel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -118,7 +133,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
 horizontal_alignment = 1
 
-[node name="Panel2" type="Panel" parent="."]
+[node name="ErrorToleranceSheet" type="Panel" parent="."]
 custom_minimum_size = Vector2(0, 27)
 layout_mode = 0
 offset_left = 211.0
@@ -127,7 +142,7 @@ offset_right = 293.0
 offset_bottom = 147.0
 theme = ExtResource("5_fj3in")
 
-[node name="ErrorToleranceLabel" type="Label" parent="Panel2"]
+[node name="ErrorToleranceLabel" type="Label" parent="ErrorToleranceSheet"]
 layout_mode = 0
 offset_left = 3.0
 offset_top = -1.0
@@ -138,7 +153,7 @@ theme_override_font_sizes/font_size = 10
 text = "Error Tolerance"
 horizontal_alignment = 1
 
-[node name="ErrorToleranceAmountLabel" type="Label" parent="Panel2/ErrorToleranceLabel"]
+[node name="ErrorToleranceAmountLabel" type="Label" parent="ErrorToleranceSheet/ErrorToleranceLabel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -155,20 +170,27 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
 horizontal_alignment = 1
 
-[node name="ShopButton" type="Button" parent="."]
-custom_minimum_size = Vector2(50, 10)
+[node name="CurrencyTexture" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 273.0
+offset_right = 313.0
+offset_bottom = 40.0
+
+[node name="CurrencyAmountLabel" type="Label" parent="CurrencyTexture"]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -29.0
-offset_right = 50.0
-offset_bottom = -10.0
-grow_vertical = 0
-theme = ExtResource("3_sh86c")
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -11.0
+offset_right = 36.0
+offset_bottom = 12.0
+grow_horizontal = 0
+grow_vertical = 2
 theme_override_font_sizes/font_size = 10
-text = "Shop
-"
+text = "0"
 
 [connection signal="pressed" from="StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="ShopButton" to="." method="_on_shop_button_pressed"]

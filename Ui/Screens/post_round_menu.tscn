@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://5lu5qm335erl"]
+[gd_scene load_steps=7 format=3 uid="uid://5lu5qm335erl"]
 
 [ext_resource type="Script" uid="uid://cp12bjw2qdyfv" path="res://Ui/Screens/post_round_menu.gd" id="1_wu7fb"]
+[ext_resource type="Texture2D" uid="uid://c3ygrchei8a0g" path="res://Game/Counter.png" id="2_t7xyf"]
 [ext_resource type="Texture2D" uid="uid://dwfnm2hsocyow" path="res://Characters/Creature/Textures/Dwarf.png" id="2_x7bqm"]
+[ext_resource type="Texture2D" uid="uid://1qyxn72dcehc" path="res://Game/Bucket.png" id="4_5ef2e"]
+[ext_resource type="Theme" uid="uid://dekeeobkykipg" path="res://Themes/Button.tres" id="4_qqwdq"]
+[ext_resource type="Texture2D" uid="uid://cec68ox3b7mci" path="res://Characters/Angersprite.png" id="4_regel"]
 
 [node name="PostRoundMenu" type="Control"]
 process_mode = 2
@@ -20,6 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_t7xyf")
 
 [node name="CharacterTexture" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(100, 70)
@@ -39,65 +44,80 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 texture = ExtResource("2_x7bqm")
 
-[node name="Button" type="Button" parent="."]
+[node name="ApprovalTexture" type="TextureRect" parent="CharacterTexture"]
+layout_mode = 0
+offset_left = 78.0
+offset_top = 8.0
+offset_right = 94.0
+offset_bottom = 24.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_regel")
+stretch_mode = 2
+
+[node name="NextCreatureButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -60.0
-offset_top = -34.0
-offset_right = 58.0
+offset_left = -35.0
+offset_top = -25.0
+offset_right = 42.0
 offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 8
 size_flags_vertical = 8
+theme = ExtResource("4_qqwdq")
+theme_override_font_sizes/font_size = 10
 text = "Next Creature"
 
-[node name="CorrectItems" type="Label" parent="."]
+[node name="CurrencyTexture" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = -1.0
-offset_top = 101.0
-offset_right = 123.0
-offset_bottom = 124.0
-text = "Correct Amount"
+offset_left = 292.0
+offset_top = 5.0
+offset_right = 308.0
+offset_bottom = 20.0
 
-[node name="CorrectNum" type="Label" parent="CorrectItems"]
+[node name="CurrencyAmountLabel" type="Label" parent="CurrencyTexture"]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -2.0
-offset_right = 20.0
-offset_bottom = 21.0
-grow_horizontal = 2
-grow_vertical = 0
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -11.0
+offset_right = 36.0
+offset_bottom = 12.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 10
+text = "0"
 
-[node name="IncorrectItems" type="Label" parent="."]
+[node name="BucketTexture" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 182.0
-offset_top = 102.0
-offset_right = 319.0
-offset_bottom = 125.0
-text = "Incorrect Amount"
+offset_left = 140.0
+offset_top = 107.0
+offset_right = 180.0
+offset_bottom = 147.0
+texture = ExtResource("4_5ef2e")
 
-[node name="IncorrectNum" type="Label" parent="IncorrectItems"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -22.5
-offset_top = -4.0
-offset_right = 17.5
-offset_bottom = 19.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="PlusLabel" type="Label" parent="BucketTexture"]
+layout_mode = 0
+offset_left = -26.0
+offset_right = 14.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 12
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="MinusLabel" type="Label" parent="BucketTexture"]
+layout_mode = 0
+offset_left = 44.0
+offset_right = 84.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+
+[connection signal="pressed" from="NextCreatureButton" to="." method="_on_button_pressed"]

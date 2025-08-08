@@ -95,7 +95,6 @@ position = Vector2(120, -94)
 position = Vector2(-58, -102)
 
 [node name="GameTimer" type="Timer" parent="."]
-wait_time = 30.0
 one_shot = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]

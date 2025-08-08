@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gyk3lj63iea"
-path="res://.godot/imported/Bucket.png-b345a78120fb1f7412404643933f6e87.ctex"
+uid="uid://5oy0fpm278el"
+path="res://.godot/imported/Bucket1Band3.png-c13fa2ee93996f82e10a2e5683903977.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters/Player/Bucket.png"
-dest_files=["res://.godot/imported/Bucket.png-b345a78120fb1f7412404643933f6e87.ctex"]
+source_file="res://Upgrade System/Bucket1Band3.png"
+dest_files=["res://.godot/imported/Bucket1Band3.png-c13fa2ee93996f82e10a2e5683903977.ctex"]
 
 [params]
 

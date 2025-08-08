@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://bxa7wyyoqans6"]
+
+[ext_resource type="Shader" uid="uid://wp0pk5rvktem" path="res://Ui/death_transition_overlay.gdshader" id="1_6dr7v"]
+[ext_resource type="Script" uid="uid://bccjuubvt4egt" path="res://Ui/death_transition_overlay.gd" id="2_b0bc2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4ubx6"]
+shader = ExtResource("1_6dr7v")
+shader_parameter/progress = 0.0
+
+[sub_resource type="Animation" id="Animation_4ubx6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_fm0my"]
+resource_name = "progress"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ppbm4"]
+_data = {
+&"RESET": SubResource("Animation_4ubx6"),
+&"progress": SubResource("Animation_fm0my")
+}
+
+[node name="DeathTransitionOverlay" type="ColorRect"]
+process_mode = 2
+material = SubResource("ShaderMaterial_4ubx6")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("2_b0bc2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ppbm4")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

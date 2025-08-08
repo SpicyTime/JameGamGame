@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://xwaks5myh7ei" path="res://Ui/shop_item.gd" id="1_o0sv7"]
 
-[node name="ShopItem" type="Button" groups=["ItemEffected"]]
+[node name="ShopItem" type="Button"]
 process_mode = 2
 custom_minimum_size = Vector2(73, 25)
 offset_right = 8.0

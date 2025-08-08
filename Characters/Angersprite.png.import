@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gyk3lj63iea"
-path="res://.godot/imported/Bucket.png-b345a78120fb1f7412404643933f6e87.ctex"
+uid="uid://cec68ox3b7mci"
+path="res://.godot/imported/Angersprite.png-752cd6985c304945a7a88769ce5e4b90.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters/Player/Bucket.png"
-dest_files=["res://.godot/imported/Bucket.png-b345a78120fb1f7412404643933f6e87.ctex"]
+source_file="res://Characters/Angersprite.png"
+dest_files=["res://.godot/imported/Angersprite.png-752cd6985c304945a7a88769ce5e4b90.ctex"]
 
 [params]
 

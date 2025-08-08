@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="FallingObjectData" load_steps=3 format=3 uid="uid://beoviqmhosgkw"]
+
+[ext_resource type="Script" uid="uid://dhegdgr0up1s1" path="res://Object/falling_object_data.gd" id="1_csdtc"]
+[ext_resource type="Texture2D" uid="uid://bi1riv4l37qen" path="res://Object/Objects/Textures/Trident.png" id="2_fllrv"]
+
+[resource]
+script = ExtResource("1_csdtc")
+name = "Trident"
+associated_creature = "Mermaid"
+fall_speed = 980.0
+texture = ExtResource("2_fllrv")
+metadata/_custom_type_script = "uid://dhegdgr0up1s1"

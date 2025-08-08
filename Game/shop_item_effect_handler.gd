@@ -7,23 +7,24 @@ enum ItemType {
 	CREATURE_ERROR_TOLERANCE,
 	CREATURE_REQUIRED_AMOUNT
 }
-
+var bucket_size_tier: int = 1
+var band_filter_tier: int = 1
 func apply_item_effect(item: ShopItem, node: Node):
 	var item_type: ItemType = item.item_type
 	match item_type:
 		ItemType.BUCKET_SIZE:
 			if node.has_method("increase_bucket_size"):
-				
 				node.increase_bucket_size(item.tier_effects[item.indexed_tier])
+				bucket_size_tier += 1
 				
 		ItemType.BUCKET_SPEED:
 			if node.has_method("increase_bucket_speed"):
-				print(item.current_tier - 1)
 				node.increase_bucket_speed(item.tier_effects[item.indexed_tier])
 
 		ItemType.BUCKET_FILTER:
 			# Example: Enable filter to remove incorrect items
 			if node.has_method("increase_filter_chance"):
+				var band_indexed_tier: int = (item.indexed_tier + 1) * bucket_size_tier  
 				node.increase_filter_chance(item.tier_effects[item.indexed_tier])
 
 		ItemType.ITEM_FALL_SPEED:

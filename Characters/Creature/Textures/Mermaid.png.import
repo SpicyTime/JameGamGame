@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gyk3lj63iea"
-path="res://.godot/imported/Bucket.png-b345a78120fb1f7412404643933f6e87.ctex"
+uid="uid://c3x062ih6kw5"
+path="res://.godot/imported/Mermaid.png-d1d60190f3f5659e585f26a74d6379cc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters/Player/Bucket.png"
-dest_files=["res://.godot/imported/Bucket.png-b345a78120fb1f7412404643933f6e87.ctex"]
+source_file="res://Characters/Creature/Textures/Mermaid.png"
+dest_files=["res://.godot/imported/Mermaid.png-d1d60190f3f5659e585f26a74d6379cc.ctex"]
 
 [params]
 

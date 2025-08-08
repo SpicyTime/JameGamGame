@@ -9,7 +9,7 @@ var GAME = preload("res://Game/game.tscn").instantiate()
 var SHOP_OVERLAY = preload("res://Ui/shop_overlay.tscn").instantiate()
 var HUD_OVERLAY = preload("res://Ui/hud.tscn").instantiate()
 var PAUSE_OVERLAY = preload("res://Ui/Screens/pause_menu.tscn").instantiate()
-
+var DEATH_TRANSITION_OVERLAY = preload("res://Ui/death_transition_overlay.tscn").instantiate()
 
 var screens: Dictionary = {
 	"PreRoundMenu": PRE_ROUND_MENU,
@@ -23,7 +23,8 @@ var screens: Dictionary = {
 var overlays: Dictionary = {
 	"ShopOverlay": SHOP_OVERLAY,
 	"HudOverlay": HUD_OVERLAY,
-	"PauseOverlay": PAUSE_OVERLAY
+	"PauseOverlay": PAUSE_OVERLAY,
+	"DeathTransitionOverlay": DEATH_TRANSITION_OVERLAY
 }
 var active_screen: Node = null
 var active_overlay: Control = null
@@ -45,7 +46,7 @@ func _ready():
 		#overlay.visible = false
 		overlay.screen_manager = self
 		overlay.visible = false
-	show_overlay("ShopOverlay")
+	#show_overlay("ShopOverlay")
 	swap_to("MainMenu")
 	
 func swap_to(name: String) -> void:
@@ -59,11 +60,12 @@ func swap_to(name: String) -> void:
 		push_error("Screen not found: " + name)
 		
 	if name == "Game":
-		
-		get_tree().paused = false
+		if get_tree():
+			get_tree().paused = false
 		#
 	else:
-		get_tree().paused = true
+		if get_tree():
+			get_tree().paused = true
 		
 	SignalBus.screen_swapped.emit(active_screen)
 
@@ -73,7 +75,9 @@ func show_overlay(overlay_name: String) -> void:
 		overlays[overlay_name].visible = true
 		SignalBus.overlay_activated.emit(overlays[overlay_name])
 		
+				
 func hide_overlay(overlay_name) -> void:
 	if overlays.has(overlay_name):
 		overlays[overlay_name].visible = false
 		SignalBus.overlay_deactivated.emit(overlays[overlay_name])
+		

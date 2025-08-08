@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="FallingObjectData" load_steps=3 format=3 uid="uid://bfd1mhar84t6g"]
+
+[ext_resource type="Script" uid="uid://dhegdgr0up1s1" path="res://Object/falling_object_data.gd" id="1_c2g5m"]
+[ext_resource type="Texture2D" uid="uid://duhftlw1q5frn" path="res://Object/Objects/Textures/Starfish.png" id="2_1oig8"]
+
+[resource]
+script = ExtResource("1_c2g5m")
+name = "Starfish"
+associated_creature = "Mermaid"
+fall_speed = 980.0
+texture = ExtResource("2_1oig8")
+metadata/_custom_type_script = "uid://dhegdgr0up1s1"

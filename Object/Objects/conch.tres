@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="FallingObjectData" load_steps=3 format=3 uid="uid://c0afrh4vbokb3"]
+
+[ext_resource type="Script" uid="uid://dhegdgr0up1s1" path="res://Object/falling_object_data.gd" id="1_g5ma5"]
+[ext_resource type="Texture2D" uid="uid://c20wxrgal5aov" path="res://Object/Objects/Textures/Conch.png" id="2_8blo7"]
+
+[resource]
+script = ExtResource("1_g5ma5")
+name = "Conch"
+associated_creature = "Mermaid"
+fall_speed = 980.0
+texture = ExtResource("2_8blo7")
+metadata/_custom_type_script = "uid://dhegdgr0up1s1"

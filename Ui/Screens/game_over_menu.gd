@@ -5,7 +5,8 @@ func _ready() -> void:
 	SignalBus.screen_swapped.connect(_on_screen_swapped)
 	
 func _on_button_pressed() -> void:
-	screen_manager.swap_to("MainMenu")
+	get_tree().reload_current_scene()
+	SignalBus.game_over.emit()
 
 func _on_screen_swapped(screen: Node):
 	if screen == self:

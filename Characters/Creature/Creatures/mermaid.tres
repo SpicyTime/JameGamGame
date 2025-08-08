@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="CreatureData" load_steps=9 format=3 uid="uid://bf38d0uxd4wu7"]
+
+[ext_resource type="Script" uid="uid://dhegdgr0up1s1" path="res://Object/falling_object_data.gd" id="1_b0est"]
+[ext_resource type="Resource" uid="uid://c0afrh4vbokb3" path="res://Object/Objects/conch.tres" id="2_a851v"]
+[ext_resource type="Script" uid="uid://bcvyjp5yh2y50" path="res://Characters/Creature/creature_data.gd" id="2_kokj1"]
+[ext_resource type="Texture2D" uid="uid://c3x062ih6kw5" path="res://Characters/Creature/Textures/Mermaid.png" id="3_kokj1"]
+[ext_resource type="Resource" uid="uid://dlj0ptc75sgqs" path="res://Object/Objects/coral.tres" id="3_lo4kk"]
+[ext_resource type="Resource" uid="uid://bcc21qmgy8r5" path="res://Object/Objects/pearl_necklace.tres" id="4_naua7"]
+[ext_resource type="Resource" uid="uid://bfd1mhar84t6g" path="res://Object/Objects/starfish.tres" id="5_ev4bu"]
+[ext_resource type="Resource" uid="uid://beoviqmhosgkw" path="res://Object/Objects/trident.tres" id="6_u1l4b"]
+
+[resource]
+script = ExtResource("2_kokj1")
+name = "Mermaid"
+appearance_weight = 0.4
+texture = ExtResource("3_kokj1")
+associated_items = Array[ExtResource("1_b0est")]([ExtResource("2_a851v"), ExtResource("3_lo4kk"), ExtResource("4_naua7"), ExtResource("5_ev4bu"), ExtResource("6_u1l4b")])
+correct_range = Vector2(3, 6)
+incorrect_range = Vector2(3, 5)
+metadata/_custom_type_script = "uid://bcvyjp5yh2y50"

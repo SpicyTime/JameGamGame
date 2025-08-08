@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://5lu5qm335erl"]
+[gd_scene load_steps=9 format=3 uid="uid://5lu5qm335erl"]
 
 [ext_resource type="Script" uid="uid://cp12bjw2qdyfv" path="res://Ui/Screens/post_round_menu.gd" id="1_wu7fb"]
 [ext_resource type="Texture2D" uid="uid://c3ygrchei8a0g" path="res://Game/Counter.png" id="2_t7xyf"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://1qyxn72dcehc" path="res://Game/Bucket.png" id="4_5ef2e"]
 [ext_resource type="Theme" uid="uid://dekeeobkykipg" path="res://Themes/Button.tres" id="4_qqwdq"]
 [ext_resource type="Texture2D" uid="uid://cec68ox3b7mci" path="res://Characters/Angersprite.png" id="4_regel"]
+[ext_resource type="Theme" uid="uid://ct3w1dulhwhom" path="res://Themes/Label.tres" id="6_regel"]
+[ext_resource type="PackedScene" uid="uid://clnbyf64hgt3b" path="res://Ui/install_menu_sounds.tscn" id="8_vlf6k"]
 
 [node name="PostRoundMenu" type="Control"]
 process_mode = 2
@@ -93,6 +95,7 @@ offset_right = 36.0
 offset_bottom = 12.0
 grow_horizontal = 0
 grow_vertical = 2
+theme = ExtResource("6_regel")
 theme_override_font_sizes/font_size = 10
 text = "0"
 
@@ -105,19 +108,32 @@ offset_bottom = 147.0
 texture = ExtResource("4_5ef2e")
 
 [node name="PlusLabel" type="Label" parent="BucketTexture"]
-layout_mode = 0
-offset_left = -26.0
-offset_right = 14.0
+layout_mode = 1
+offset_right = 40.0
 offset_bottom = 23.0
+theme = ExtResource("6_regel")
 theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_font_sizes/font_size = 12
+text = "+2"
 
 [node name="MinusLabel" type="Label" parent="BucketTexture"]
-layout_mode = 0
-offset_left = 44.0
-offset_right = 84.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -10.0
 offset_bottom = 23.0
+grow_horizontal = 0
+theme = ExtResource("6_regel")
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 12
+text = "-2"
+
+[node name="BandTexture" type="TextureRect" parent="BucketTexture"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="InstallMenuSounds" parent="." instance=ExtResource("8_vlf6k")]
 
 [connection signal="pressed" from="NextCreatureButton" to="." method="_on_button_pressed"]

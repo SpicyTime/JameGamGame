@@ -21,10 +21,12 @@ CreatureUiManager="*res://Ui/creature_ui_manager.gd"
 SignalBus="*res://Game/signal_bus.gd"
 GameManager="*res://Game/game_manager.gd"
 ShopItemEffectHandler="*res://Game/shop_item_effect_handler.gd"
+AudioManager="*res://Game/audio_manager.gd"
 
 [debug]
 
 gdscript/warnings/unused_signal=0
+gdscript/warnings/narrowing_conversion=0
 
 [display]
 

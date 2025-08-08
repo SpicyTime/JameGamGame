@@ -1,0 +1,115 @@
+[gd_scene load_steps=5 format=3 uid="uid://lxi6dbhpg58o"]
+
+[ext_resource type="Script" uid="uid://dvrnjjgv85l8e" path="res://Ui/Screens/settings_overlay.gd" id="1_aist2"]
+[ext_resource type="Theme" uid="uid://ct3w1dulhwhom" path="res://Themes/Label.tres" id="2_je73p"]
+[ext_resource type="Theme" uid="uid://dekeeobkykipg" path="res://Themes/Button.tres" id="3_je73p"]
+[ext_resource type="PackedScene" uid="uid://clnbyf64hgt3b" path="res://Ui/install_menu_sounds.tscn" id="4_1ghhv"]
+
+[node name="SettingsOverlay" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_aist2")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -107.0
+offset_top = -67.0
+offset_right = 107.0
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -24.0
+offset_right = 24.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme = ExtResource("2_je73p")
+text = "Settings"
+
+[node name="MusicLabel" type="Label" parent="Panel"]
+layout_mode = 2
+offset_left = 87.0
+offset_top = 38.0
+offset_right = 127.0
+offset_bottom = 50.0
+theme = ExtResource("2_je73p")
+text = "Music"
+
+[node name="MusicSlider" type="HSlider" parent="Panel/MusicLabel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.0
+offset_top = 7.0
+offset_right = 48.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+step = 0.05
+value = 0.5
+
+[node name="SFXSlider" type="Label" parent="Panel"]
+layout_mode = 2
+offset_left = 87.0
+offset_top = 68.0
+offset_right = 127.0
+offset_bottom = 80.0
+theme = ExtResource("2_je73p")
+text = "SFX"
+
+[node name="SFXSlider" type="HSlider" parent="Panel/SFXSlider"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_right = 48.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 1.0
+step = 0.05
+value = 0.5
+
+[node name="ExitButton" type="Button" parent="Panel"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -15.0
+offset_top = -17.0
+offset_right = 15.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_je73p")
+text = "Exit"
+
+[node name="InstallMenuSounds" parent="." instance=ExtResource("4_1ghhv")]
+
+[connection signal="value_changed" from="Panel/MusicLabel/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="Panel/SFXSlider/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="pressed" from="Panel/ExitButton" to="." method="_on_exit_button_pressed"]

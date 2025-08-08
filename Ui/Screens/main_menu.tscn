@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cs547qppk5go0"]
+[gd_scene load_steps=6 format=3 uid="uid://cs547qppk5go0"]
 
 [ext_resource type="Script" uid="uid://denpf4eqar8qq" path="res://Ui/Screens/main_menu.gd" id="1_1ig6n"]
 [ext_resource type="Texture2D" uid="uid://c3ygrchei8a0g" path="res://Game/Counter.png" id="2_2bw1q"]
 [ext_resource type="Theme" uid="uid://dekeeobkykipg" path="res://Themes/Button.tres" id="2_3jlfg"]
+[ext_resource type="Theme" uid="uid://ct3w1dulhwhom" path="res://Themes/Label.tres" id="4_k2oow"]
+[ext_resource type="PackedScene" uid="uid://clnbyf64hgt3b" path="res://Ui/install_menu_sounds.tscn" id="5_5eap4"]
 
 [node name="MainMenu" type="Control"]
 process_mode = 2
@@ -13,6 +15,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1ig6n")
+
+[node name="InstallMenuSounds" parent="." instance=ExtResource("5_5eap4")]
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -56,6 +60,7 @@ offset_left = -64.5
 offset_right = 64.5
 offset_bottom = 23.0
 grow_horizontal = 2
+theme = ExtResource("4_k2oow")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
 text = "Jame Gam Game"

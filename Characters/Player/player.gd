@@ -17,8 +17,10 @@ func increase_bucket_speed(speed_multiplier: int) -> void:
 	
 func increase_filter_chance(new_chance: float) -> void:
 	filter_chance = new_chance / 100
+	
 func set_band_texture(texture: Texture2D):
 	$Band.texture = texture
+	
 func _handle_input() -> void:
 	input_vector = Vector2.ZERO
 	if Input.is_action_pressed("move_left"):
@@ -32,8 +34,11 @@ func _handle_input() -> void:
 func bounce_object_out(object: FallingObject) -> void:
 	var rand_x: float = randf_range(1, -1) 
 	object.velocity.x = rand_x * 200
+	
 func _ready() -> void:
 	SignalBus.refresh_player_textures.connect(_on_player_refresh_textures)
+	GameManager.current_player_texture = $Bucket.texture
+	
 func _physics_process(delta: float) -> void:
 	_handle_input()
 	
@@ -45,7 +50,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func _on_pickup_area_body_entered(body: Node2D) -> void:
-	
 	if body.has_method("get_associated_creature_name"):
 		var associated_creature_name: String = body.get_associated_creature_name()
 		if associated_creature_name != CreatureUiManager.current_creature_data.name:
@@ -61,3 +65,5 @@ func _on_pickup_area_body_entered(body: Node2D) -> void:
 func _on_player_refresh_textures(bucket_texture: Texture2D, band_texture: Texture2D):
 	$Bucket.texture = bucket_texture
 	$Band.texture = band_texture
+	GameManager.current_player_texture = bucket_texture
+	GameManager.current_band_texture = band_texture

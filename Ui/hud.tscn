@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://q3olr0a2apba"]
+[gd_scene load_steps=3 format=3 uid="uid://q3olr0a2apba"]
 
 [ext_resource type="Script" uid="uid://dbjjndvbprr4o" path="res://Ui/hud.gd" id="1_ba8qc"]
+[ext_resource type="Theme" uid="uid://ct3w1dulhwhom" path="res://Themes/Label.tres" id="2_2eodl"]
 
 [node name="Hud" type="Control"]
 layout_mode = 3
@@ -24,4 +25,5 @@ anchor_right = 1.0
 offset_left = -40.0
 offset_bottom = 23.0
 grow_horizontal = 0
+theme = ExtResource("2_2eodl")
 horizontal_alignment = 2

@@ -4,19 +4,18 @@ var PRE_ROUND_MENU = preload("res://Ui/Screens/pre_round_menu.tscn").instantiate
 var POST_ROUND_MENU = preload("res://Ui/Screens/post_round_menu.tscn").instantiate()
 var GAME_OVER_MENU = preload("res://Ui/Screens/game_over_menu.tscn").instantiate()
 var MAIN_MENU = preload("res://Ui/Screens/main_menu.tscn").instantiate()
-var SETTINGS_MENU = preload("res://Ui/Screens/settings_menu.tscn").instantiate()
 var GAME = preload("res://Game/game.tscn").instantiate()
 var SHOP_OVERLAY = preload("res://Ui/shop_overlay.tscn").instantiate()
 var HUD_OVERLAY = preload("res://Ui/hud.tscn").instantiate()
 var PAUSE_OVERLAY = preload("res://Ui/Screens/pause_menu.tscn").instantiate()
 var DEATH_TRANSITION_OVERLAY = preload("res://Ui/death_transition_overlay.tscn").instantiate()
+var SETTINGS_OVERLAY = preload("res://Ui/Screens/settings_overlay.tscn").instantiate()
 
 var screens: Dictionary = {
 	"PreRoundMenu": PRE_ROUND_MENU,
 	"GameOverMenu": GAME_OVER_MENU,
 	"PostRoundMenu": POST_ROUND_MENU,
 	"MainMenu": MAIN_MENU,
-	#"SettingsMenu": SETTINGS_MENU,
 	"Game": GAME
 }
 
@@ -24,8 +23,10 @@ var overlays: Dictionary = {
 	"ShopOverlay": SHOP_OVERLAY,
 	"HudOverlay": HUD_OVERLAY,
 	"PauseOverlay": PAUSE_OVERLAY,
-	"DeathTransitionOverlay": DEATH_TRANSITION_OVERLAY
+	"DeathTransitionOverlay": DEATH_TRANSITION_OVERLAY,
+	"SettingsOverlay": SETTINGS_OVERLAY
 }
+
 var active_screen: Node = null
 var active_overlay: Control = null
 
@@ -49,17 +50,17 @@ func _ready():
 	#show_overlay("ShopOverlay")
 	swap_to("MainMenu")
 	
-func swap_to(name: String) -> void:
+func swap_to(screen_name: String) -> void:
 	if active_screen:
 		active_screen.visible = false
 		
-	if screens.has(name):
-		active_screen = screens[name]
+	if screens.has(screen_name):
+		active_screen = screens[screen_name]
 		active_screen.visible = true
 	else:
-		push_error("Screen not found: " + name)
+		push_error("Screen not found: " + screen_name)
 		
-	if name == "Game":
+	if screen_name == "Game":
 		if get_tree():
 			get_tree().paused = false
 		#

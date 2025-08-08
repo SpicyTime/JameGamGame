@@ -24,7 +24,6 @@ func apply_item_effect(item: ShopItem, node: Node):
 		ItemType.BUCKET_FILTER:
 			# Example: Enable filter to remove incorrect items
 			if node.has_method("increase_filter_chance"):
-				var band_indexed_tier: int = (item.indexed_tier + 1) * bucket_size_tier  
 				node.increase_filter_chance(item.tier_effects[item.indexed_tier])
 
 		ItemType.ITEM_FALL_SPEED:

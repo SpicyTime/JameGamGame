@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://clnbyf64hgt3b"]
+
+[ext_resource type="Script" uid="uid://dt2084ebkyyhs" path="res://Ui/install_menu_sounds.gd" id="1_xjro7"]
+[ext_resource type="AudioStream" uid="uid://cgbk4hisno501" path="res://Ui/SFX/buttonclick.wav" id="2_c5n11"]
+[ext_resource type="AudioStream" uid="uid://dq1uo67su0ndt" path="res://Ui/SFX/buttonhover.wav" id="3_fcyrl"]
+
+[node name="InstallMenuSounds" type="Node"]
+script = ExtResource("1_xjro7")
+
+[node name="ButtonClick" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_c5n11")
+bus = &"SFX"
+
+[node name="ButtonHover" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_fcyrl")
+bus = &"SFX"

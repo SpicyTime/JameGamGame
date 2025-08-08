@@ -1,4 +1,6 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://dekeeobkykipg"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://dekeeobkykipg"]
+
+[ext_resource type="FontFile" uid="uid://bhpyvyg1gxdev" path="res://Themes/PixelParchment.ttf" id="1_3uj03"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_og88e"]
 
@@ -33,6 +35,7 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
 [resource]
+Button/fonts/font = ExtResource("1_3uj03")
 Button/styles/focus = SubResource("StyleBoxEmpty_og88e")
 Button/styles/hover = SubResource("StyleBoxFlat_og88e")
 Button/styles/normal = SubResource("StyleBoxFlat_xl6ml")

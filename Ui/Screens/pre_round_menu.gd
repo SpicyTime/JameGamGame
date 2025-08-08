@@ -55,22 +55,18 @@ func start_tweens() -> void:
 	# Tween required sheet
 	var required_sheet_tween: Tween = create_tween()
 	required_sheet_tween.tween_property(required_sheet, "position", required_sheet_start_pos, 1.0) \
-		.set_trans(Tween.TRANS_QUAD) \
+		.set_trans(Tween.TRANS_EXPO) \
 		.set_ease(Tween.EASE_OUT)
-
-	await error_sheet_tween.finished and required_sheet_tween.finished
 
 	# Tween buttons into place
 	var buttons_tween: Tween = create_tween().set_parallel(true)
-	buttons_tween.tween_property(start_game, "position", start_game_start_pos, 2.0) \
-		.set_trans(Tween.TRANS_QUAD) \
+	buttons_tween.tween_property(start_game, "position", start_game_start_pos, 1) \
+		.set_trans(Tween.TRANS_EXPO) \
 		.set_ease(Tween.EASE_OUT)
-	buttons_tween.tween_property(shop_button, "position", shop_button_start_pos, 2.0) \
-		.set_trans(Tween.TRANS_QUAD) \
+	buttons_tween.tween_property(shop_button, "position", shop_button_start_pos, 1) \
+		.set_trans(Tween.TRANS_EXPO) \
 		.set_ease(Tween.EASE_OUT)
-
 	
-
 func _ready() -> void:
 	SignalBus.screen_swapped.connect(_on_screen_swapped)
 	

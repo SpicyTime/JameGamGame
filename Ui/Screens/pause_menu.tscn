@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dapv5hofl8dm1"]
+[gd_scene load_steps=6 format=3 uid="uid://dapv5hofl8dm1"]
 
 [ext_resource type="Script" uid="uid://boc85u1ufnykb" path="res://Ui/Screens/pause_menu.gd" id="1_cs4wv"]
+[ext_resource type="Theme" uid="uid://ct3w1dulhwhom" path="res://Themes/Label.tres" id="2_07qt0"]
 [ext_resource type="Theme" uid="uid://dekeeobkykipg" path="res://Themes/Button.tres" id="2_i5ny4"]
+[ext_resource type="PackedScene" uid="uid://clnbyf64hgt3b" path="res://Ui/install_menu_sounds.tscn" id="4_qdovh"]
 
 [sub_resource type="Theme" id="Theme_07qt0"]
 
@@ -47,10 +49,11 @@ offset_left = 94.0
 offset_top = 68.0
 offset_right = 112.0
 offset_bottom = 82.0
+theme = ExtResource("2_07qt0")
 theme_override_font_sizes/font_size = 10
 text = "SFX"
 
-[node name="SFXController" type="HSlider" parent="Panel/SFXSliderLabel"]
+[node name="SFXSlider" type="HSlider" parent="Panel/SFXSliderLabel"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -64,6 +67,9 @@ offset_bottom = 13.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.5, 0.5)
+max_value = 1.0
+step = 0.05
+value = 0.5
 
 [node name="MusicSliderLabel" type="Label" parent="Panel"]
 layout_mode = 0
@@ -71,10 +77,11 @@ offset_left = 91.0
 offset_top = 92.0
 offset_right = 120.0
 offset_bottom = 106.0
+theme = ExtResource("2_07qt0")
 theme_override_font_sizes/font_size = 10
 text = "Music"
 
-[node name="MusicController" type="HSlider" parent="Panel/MusicSliderLabel"]
+[node name="MusicSlider" type="HSlider" parent="Panel/MusicSliderLabel"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -88,6 +95,9 @@ offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.5, 0.5)
+max_value = 1.0
+step = 0.05
+value = 0.5
 
 [node name="BackToGameButton" type="Button" parent="Panel"]
 layout_mode = 1
@@ -112,7 +122,12 @@ offset_left = 74.0
 offset_top = 6.0
 offset_right = 141.0
 offset_bottom = 29.0
+theme = ExtResource("2_07qt0")
 theme_override_font_sizes/font_size = 8
 text = "Current Creature"
 
+[node name="InstallMenuSounds" parent="." instance=ExtResource("4_qdovh")]
+
+[connection signal="value_changed" from="Panel/SFXSliderLabel/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="value_changed" from="Panel/MusicSliderLabel/MusicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="pressed" from="Panel/BackToGameButton" to="." method="_on_back_to_game_button_pressed"]

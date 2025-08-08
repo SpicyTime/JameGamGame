@@ -1,6 +1,45 @@
-[gd_scene load_steps=2 format=3 uid="uid://gqy74av87nko"]
+[gd_scene load_steps=10 format=3 uid="uid://gqy74av87nko"]
 
 [ext_resource type="Script" uid="uid://chuhk4faaqaas" path="res://Ui/Screens/game_over_menu.gd" id="1_jeegg"]
+[ext_resource type="FontFile" uid="uid://bhpyvyg1gxdev" path="res://Themes/PixelParchment.ttf" id="2_ynkft"]
+[ext_resource type="Theme" uid="uid://ct3w1dulhwhom" path="res://Themes/Label.tres" id="3_wj3oh"]
+[ext_resource type="PackedScene" uid="uid://clnbyf64hgt3b" path="res://Ui/install_menu_sounds.tscn" id="4_wj3oh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x1rrh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8itlu"]
+bg_color = Color(0.258562, 9.9029e-05, 0.290712, 1)
+border_width_bottom = 3
+border_color = Color(0.14, 0, 0.16, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1pj2r"]
+bg_color = Color(0.143353, 0.00340137, 0.16637, 1)
+border_width_bottom = 3
+border_color = Color(0.0447249, 5.19571e-05, 0.115025, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k46hj"]
+bg_color = Color(0.0861581, 1.46257e-05, 0.100631, 1)
+border_width_bottom = 3
+border_color = Color(0.0444106, 6.2931e-06, 0.0546034, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="Theme" id="Theme_t1tbp"]
+Button/fonts/font = ExtResource("2_ynkft")
+Button/styles/focus = SubResource("StyleBoxEmpty_x1rrh")
+Button/styles/hover = SubResource("StyleBoxFlat_8itlu")
+Button/styles/normal = SubResource("StyleBoxFlat_1pj2r")
+Button/styles/pressed = SubResource("StyleBoxFlat_k46hj")
 
 [node name="GameOverMenu" type="Control"]
 process_mode = 2
@@ -34,6 +73,7 @@ offset_right = 57.5
 offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_t1tbp")
 text = "Back to menu"
 
 [node name="Label" type="Label" parent="."]
@@ -45,6 +85,10 @@ offset_left = -53.0
 offset_right = 53.0
 offset_bottom = 23.0
 grow_horizontal = 2
+theme = ExtResource("3_wj3oh")
+theme_override_font_sizes/font_size = 20
 text = "You are dead"
+
+[node name="InstallMenuSounds" parent="." instance=ExtResource("4_wj3oh")]
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

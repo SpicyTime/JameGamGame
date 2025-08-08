@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c24c8cimdeafp"]
+[gd_scene load_steps=20 format=3 uid="uid://c24c8cimdeafp"]
 
 [ext_resource type="Script" uid="uid://c1a8v8h8qim1k" path="res://Ui/shop_overlay.gd" id="1_qcukf"]
 [ext_resource type="PackedScene" uid="uid://1afeklw6eo37" path="res://Ui/shop_item.tscn" id="2_1rmmy"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://cbflpklu86k7g" path="res://Upgrade System/Bucket4Band2.png" id="12_48qqx"]
 [ext_resource type="Texture2D" uid="uid://c7fwbrc055p54" path="res://Upgrade System/Bucket4Band3.png" id="13_626ig"]
 [ext_resource type="Texture2D" uid="uid://cyqsm6yl2ktfx" path="res://Upgrade System/Bucket3Band3.png" id="14_52mhv"]
+[ext_resource type="PackedScene" uid="uid://clnbyf64hgt3b" path="res://Ui/install_menu_sounds.tscn" id="18_ah855"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f56cg"]
 bg_color = Color(0.890432, 0.625998, 0.462548, 1)
@@ -138,5 +139,7 @@ grow_horizontal = 0
 grow_vertical = 2
 theme_override_font_sizes/font_size = 10
 text = "0"
+
+[node name="InstallMenuSounds" parent="." instance=ExtResource("18_ah855")]
 
 [connection signal="pressed" from="Panel/ExitButton" to="." method="_on_exit_button_pressed"]

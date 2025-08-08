@@ -6,4 +6,4 @@ func _on_play_button_pressed() -> void:
 
 
 func _on_settings_button_pressed() -> void:
-	screen_manager.swap_to("SettingsMenu")
+	screen_manager.show_overlay("SettingsOverlay")

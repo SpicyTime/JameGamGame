@@ -2,7 +2,7 @@ extends Node2D
 var spawn_speed: float = 0.2
 @onready var game_timer: Timer = $GameTimer
 var screen_manager: Node = null
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	SignalBus.game_timer_changed.emit(game_timer.time_left)
 	
 func _ready() -> void:

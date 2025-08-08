@@ -27,12 +27,13 @@ func character_shake(amount_left: int, amount_right: int) -> void:
 	character_pos_tween.tween_property(character_texture, "position", Vector2(character_pos_x - amount_left, character_pos_y),duration)\
 		.set_trans(Tween.TRANS_EXPO) \
 		.set_ease(Tween.EASE_OUT)
-	character_pos_tween.tween_property(character_texture, "position", Vector2(character_pos_x + amount_left, character_pos_y), duration)\
+	character_pos_tween.tween_property(character_texture, "position", Vector2(character_pos_x + amount_right, character_pos_y), duration)\
 		.set_trans(Tween.TRANS_EXPO) \
 		.set_ease(Tween.EASE_OUT)
 	character_pos_tween.tween_property(character_texture, "position", Vector2(character_pos_x, character_pos_y), duration)\
 		.set_trans(Tween.TRANS_EXPO) \
 		.set_ease(Tween.EASE_OUT)
+		
 func character_jump(amount_up: int):
 	var character_pos_x: float = character_texture.position.x
 	var character_pos_y: float = character_texture.position.y
@@ -96,8 +97,9 @@ func start_tweens() -> void:
 	next_creature_button.position.y = 450
 	bucket_texture_pos.x += 300
 	bucket.position = bucket_texture_pos
-	
-	bucket_pos_tween.tween_property(bucket, "position", Vector2(140, 107), 1.0) \
+	var half_vieport_x: float = get_viewport_rect().size.x / 2
+	var half_bucket_size_x: float = bucket.texture.get_size().x / 2
+	bucket_pos_tween.tween_property(bucket, "position", Vector2(half_vieport_x - half_bucket_size_x, 107), 1.0) \
 		.set_trans(Tween.TRANS_EXPO) \
 		.set_ease(Tween.EASE_OUT)
 	await bucket_pos_tween.finished
@@ -137,7 +139,7 @@ func start_tweens() -> void:
 		.set_trans(Tween.TRANS_QUAD) \
 		.set_ease(Tween.EASE_OUT)
 		label_fade_tween.tween_property(plus_label, "modulate:a", 0, 1.0)
-	label_fade_tween.tween_property(minus_label, "modulate:a", 0, 1.0)
+		label_fade_tween.tween_property(minus_label, "modulate:a", 0, 1.0)
 		
 	$CharacterTexture/ApprovalTexture.visible = true
 func end_tweens() -> void:
@@ -175,6 +177,8 @@ func _on_screen_swapped(screen) -> void:
 		current_incorrect_amount = 0
 		difference = GameManager.correct_items - GameManager.incorrect_items
 		currency_amount_label.text = str(GameManager.player_currency)
+		bucket.texture = GameManager.current_player_texture
+		$BucketTexture/BandTexture.texture = GameManager.current_band_texture
 		start_tweens()
 		$CharacterTexture/ApprovalTexture.visible = false
 		

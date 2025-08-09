@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7wyqbpsaodsw"]
+[gd_scene load_steps=8 format=3 uid="uid://c7wyqbpsaodsw"]
 
 [ext_resource type="Script" uid="uid://bt6htnxhbu2ej" path="res://Characters/Player/player.gd" id="1_mv1ah"]
-[ext_resource type="Texture2D" uid="uid://1qyxn72dcehc" path="res://Game/Bucket.png" id="2_j341n"]
+[ext_resource type="Texture2D" uid="uid://gyk3lj63iea" path="res://Characters/Player/Bucket.png" id="2_j341n"]
+[ext_resource type="AudioStream" uid="uid://bmp426lqnix5l" path="res://Characters/Player/ItemLandInBucket.wav" id="3_bqsbk"]
+[ext_resource type="AudioStream" uid="uid://cxd7dhc6pdvxa" path="res://Characters/Player/BandBounce.wav" id="4_xf5fp"]
+[ext_resource type="AudioStream" uid="uid://drhgoni64guc5" path="res://Characters/Player/LoopMove.wav" id="5_xf5fp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ix6vc"]
 
@@ -13,7 +16,6 @@ script = ExtResource("1_mv1ah")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_ix6vc")
-disabled = true
 
 [node name="Bucket" type="Sprite2D" parent="."]
 texture = ExtResource("2_j341n")
@@ -26,5 +28,17 @@ position = Vector2(1, -4)
 shape = SubResource("RectangleShape2D_mv1ah")
 
 [node name="Band" type="Sprite2D" parent="."]
+
+[node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_bqsbk")
+bus = &"SFX"
+
+[node name="BandBounceSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_xf5fp")
+bus = &"SFX"
+
+[node name="BucketMovingSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_xf5fp")
+bus = &"SFX"
 
 [connection signal="body_entered" from="PickupArea" to="." method="_on_pickup_area_body_entered"]

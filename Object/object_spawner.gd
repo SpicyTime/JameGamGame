@@ -34,7 +34,7 @@ func pick_from_list(array: Array) -> FallingObject:
 func pick_rand_object() -> FallingObject:
 	var current_creature_object_rand: float = randf()
 	
-	if current_creature_object_rand <= 0.83:
+	if current_creature_object_rand <= 0.79:
 		return pick_from_list(GameManager.objects)
 	else:
 		return pick_from_list(CreatureUiManager.current_creature_data.associated_items)

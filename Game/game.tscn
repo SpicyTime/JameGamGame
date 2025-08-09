@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://ctekgk32jlsdg"]
+[gd_scene load_steps=14 format=3 uid="uid://ctekgk32jlsdg"]
 
 [ext_resource type="Script" uid="uid://dx1ope3etr23g" path="res://Game/game.gd" id="1_1r4le"]
 [ext_resource type="PackedScene" uid="uid://c7wyqbpsaodsw" path="res://Characters/Player/player.tscn" id="1_bk3v5"]
 [ext_resource type="Texture2D" uid="uid://cjye8n4wu3kfw" path="res://Game/WaterFall-sheet.png" id="2_jcm6v"]
 [ext_resource type="PackedScene" uid="uid://cbxpwgesyv4v3" path="res://Object/object_spawner.tscn" id="3_7raqb"]
+[ext_resource type="AudioStream" uid="uid://cxi8tg72ofj7" path="res://Game/InGameSong.wav" id="6_qmv3x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fwxkx"]
 atlas = ExtResource("2_jcm6v")
@@ -52,7 +53,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 3.0
 }]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jcm6v"]
@@ -60,14 +61,14 @@ animations = [{
 [node name="Game" type="Node2D"]
 script = ExtResource("1_1r4le")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-visible = false
 sprite_frames = SubResource("SpriteFrames_fsxsm")
 autoplay = "default"
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [node name="Player" parent="." instance=ExtResource("1_bk3v5")]
+z_index = 2
 position = Vector2(0, 70)
 
 [node name="ObjectSpawner" parent="." instance=ExtResource("3_7raqb")]
@@ -95,6 +96,7 @@ position = Vector2(120, -94)
 position = Vector2(-58, -102)
 
 [node name="GameTimer" type="Timer" parent="."]
+wait_time = 10.0
 one_shot = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -111,5 +113,10 @@ rotation = 3.14159
 position = Vector2(-160, 0)
 rotation = 1.5708
 shape = SubResource("WorldBoundaryShape2D_jcm6v")
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_qmv3x")
+autoplay = true
+bus = &"Music"
 
 [connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]

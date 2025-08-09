@@ -1,44 +1,74 @@
 extends Node
 var current_creature_data: CreatureData = null
-var creatures_datas: Array[CreatureData]
-var creature_weights: Dictionary[float, CreatureData]
+var creatures_datas: Array[CreatureData] = []
+var creature_weights: Dictionary[float, CreatureData] = {}
+const AMULET = preload("res://Object/Objects/amulet.tres")
+const ANVIL = preload("res://Object/Objects/anvil.tres")
+const CAULDRON = preload("res://Object/Objects/cauldron.tres")
+const CLOVER = preload("res://Object/Objects/clover.tres")
+const CONCH = preload("res://Object/Objects/conch.tres")
+const CORAL = preload("res://Object/Objects/coral.tres")
+const CRYSTAL_BALL = preload("res://Object/Objects/crystal_ball.tres")
+const GEMS = preload("res://Object/Objects/gems.tres")
+const HEAD_LAMP = preload("res://Object/Objects/head_lamp.tres")
+const HORSE_SHOE = preload("res://Object/Objects/horse_shoe.tres")
+const LEPRECHAUN_HAT = preload("res://Object/Objects/leprechaun_hat.tres")
+const PEARL_NECKLACE = preload("res://Object/Objects/pearl_necklace.tres")
+const PICKAXE = preload("res://Object/Objects/pickaxe.tres")
+const POT_OF_GOLD = preload("res://Object/Objects/pot_of_gold.tres")
+const RAINBOW = preload("res://Object/Objects/rainbow.tres")
+const SMITHING_HAMMER = preload("res://Object/Objects/smithing_hammer.tres")
+const STARFISH = preload("res://Object/Objects/starfish.tres")
+const TRIDENT = preload("res://Object/Objects/trident.tres")
+const WAND = preload("res://Object/Objects/wand.tres")
+const WIZARD_HAT = preload("res://Object/Objects/wizard_hat.tres")
+const DWARF = preload("res://Characters/Creature/Creatures/dwarf.tres")
+const LEPRECHAUN = preload("res://Characters/Creature/Creatures/leprechaun.tres")
+const MERMAID = preload("res://Characters/Creature/Creatures/mermaid.tres")
+const WIZARD = preload("res://Characters/Creature/Creatures/wizard.tres")
 
+var OBJECTS := [
+	AMULET,
+	ANVIL,
+	CAULDRON,
+	CLOVER,
+	CONCH,
+	CORAL,
+	CRYSTAL_BALL,
+	GEMS,
+	HEAD_LAMP,
+	HORSE_SHOE,
+	LEPRECHAUN_HAT,
+	PEARL_NECKLACE,
+	PICKAXE,
+	POT_OF_GOLD,
+	RAINBOW,
+	SMITHING_HAMMER,
+	STARFISH,
+	TRIDENT,
+	WAND,
+	WIZARD_HAT
+]
+
+var CREATURES := [
+	DWARF,
+	LEPRECHAUN,
+	MERMAID,
+	WIZARD
+]
 var total_weight: float = 0.0
 
-func load_creatures() -> void:
-	var folder_path: String = "res://Characters/Creature/Creatures"
-	var creature_folder: DirAccess = DirAccess.open(folder_path)
-	if creature_folder:
-		creature_folder.list_dir_begin()
-		var filename: String = creature_folder.get_next()
-		while filename != "":
-			var full_path: String = folder_path + "/" + filename
-			var scene: CreatureData = load(full_path)
-			if scene:
-				creatures_datas.append(scene)
-			else:
-				print("Failed to load creature")
-			filename = creature_folder.get_next()
+func load_creatures():
+	creatures_datas.clear()
+	for creature in CREATURES:
+		creatures_datas.append(creature)
 	calc_total_weight()
-func load_objects() -> void:
-	var folder_path: String = "res://Object/Objects"
-	var object_folder = DirAccess.open(folder_path)
-	if object_folder:
-		object_folder.list_dir_begin()
-		var file_name = object_folder.get_next()
-		while file_name != "":
-			if file_name == "." or file_name == ".." or object_folder.current_is_dir():
-				file_name = object_folder.get_next()
-				continue
-			var full_path: String = folder_path + "/" + file_name
-			
-			var scene: FallingObjectData = load(full_path)
-			
-			if scene:
-				GameManager.objects.append(scene)
-			else:
-				print("Failed to load resource: ", full_path)
-			file_name = object_folder.get_next()
+
+func load_objects():
+	GameManager.objects.clear()
+	for obj in OBJECTS:
+		GameManager.objects.append(obj)
+
 func _ready() -> void:
 	load_objects()
 	load_creatures()

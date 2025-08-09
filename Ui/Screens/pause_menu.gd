@@ -23,7 +23,7 @@ func _on_overlay_activated(overlay: Control) -> void:
 
 func _on_sfx_slider_value_changed(value: float) -> void:
 	AudioManager.set_sfx_volume_by_slider(value)
-
+	
 
 func _on_music_slider_value_changed(value: float) -> void:
 	AudioManager.set_music_volume_by_slider(value)

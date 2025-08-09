@@ -14,7 +14,6 @@ func show_screen() -> void:
 	
 func hide_screen() -> void:
 	visible = false
-	print("Hiding Game")
 	
 func _on_screen_swapped(screen) -> void:
 	if screen == self:

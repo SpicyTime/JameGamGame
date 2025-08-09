@@ -1,11 +1,14 @@
 extends CharacterBody2D
 class_name Player
+@onready var pickup_area_collider: CollisionShape2D = $PickupArea/CollisionShape2D
+@onready var bucket_moving_sound: AudioStreamPlayer2D = $BucketMovingSound
+
 var input_vector: Vector2 = Vector2.ZERO
 var friction: float = 1000
 var accel: float = 900.0
 var max_speed: float = 125.0
 var filter_chance: float = 0.0
-@onready var pickup_area_collider: CollisionShape2D = $PickupArea/CollisionShape2D
+
 
 func increase_bucket_size(size_increase: int) -> void:
 	var shape: RectangleShape2D = pickup_area_collider.shape
@@ -37,6 +40,7 @@ func bounce_object_out(object: FallingObject) -> void:
 	
 func _ready() -> void:
 	SignalBus.refresh_player_textures.connect(_on_player_refresh_textures)
+	$Bucket.texture = preload("res://Characters/Player/Bucket.png")
 	GameManager.current_player_texture = $Bucket.texture
 	
 func _physics_process(delta: float) -> void:
@@ -46,7 +50,11 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, max_speed * input_vector.x, delta * accel)
 	else:
 		velocity.x = move_toward(velocity.x, 0.0, delta * friction)
-		
+	if velocity.x != 0:
+		if  not bucket_moving_sound.playing or bucket_moving_sound.get_playback_position() > 0.55:
+			bucket_moving_sound.play()
+	else:
+		bucket_moving_sound.stop()
 	move_and_slide()
 	
 func _on_pickup_area_body_entered(body: Node2D) -> void:
@@ -56,14 +64,20 @@ func _on_pickup_area_body_entered(body: Node2D) -> void:
 			var rand_f = randf()
 			if rand_f < filter_chance:
 				bounce_object_out(body)
+				$BandBounceSound.play()
 				return
 			GameManager.incorrect_items += 1
 		else:
 			GameManager.correct_items += 1
+		$PickupSound.pitch_scale = randf_range(0.8, 1.2)
+		$PickupSound.play()
+		
 		body.queue_free()
 		
 func _on_player_refresh_textures(bucket_texture: Texture2D, band_texture: Texture2D):
-	$Bucket.texture = bucket_texture
+	if bucket_texture != null:
+		$Bucket.texture = bucket_texture
+		GameManager.current_player_texture = bucket_texture
 	$Band.texture = band_texture
-	GameManager.current_player_texture = bucket_texture
+	
 	GameManager.current_band_texture = band_texture

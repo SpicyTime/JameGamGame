@@ -1,13 +1,20 @@
-[gd_scene load_steps=9 format=3 uid="uid://5lu5qm335erl"]
+[gd_scene load_steps=13 format=3 uid="uid://5lu5qm335erl"]
 
-[ext_resource type="Script" uid="uid://cp12bjw2qdyfv" path="res://Ui/Screens/post_round_menu.gd" id="1_wu7fb"]
-[ext_resource type="Texture2D" uid="uid://c3ygrchei8a0g" path="res://Game/Counter.png" id="2_t7xyf"]
-[ext_resource type="Texture2D" uid="uid://dwfnm2hsocyow" path="res://Characters/Creature/Textures/Dwarf.png" id="2_x7bqm"]
-[ext_resource type="Texture2D" uid="uid://1qyxn72dcehc" path="res://Game/Bucket.png" id="4_5ef2e"]
-[ext_resource type="Theme" uid="uid://dekeeobkykipg" path="res://Themes/Button.tres" id="4_qqwdq"]
-[ext_resource type="Texture2D" uid="uid://cec68ox3b7mci" path="res://Characters/Angersprite.png" id="4_regel"]
-[ext_resource type="Theme" uid="uid://ct3w1dulhwhom" path="res://Themes/Label.tres" id="6_regel"]
-[ext_resource type="PackedScene" uid="uid://clnbyf64hgt3b" path="res://Ui/install_menu_sounds.tscn" id="8_vlf6k"]
+[ext_resource type="Script" uid="uid://cp12bjw2qdyfv" path="res://Ui/Screens/post_round_menu.gd" id="1_5jxg5"]
+[ext_resource type="Texture2D" uid="uid://cjye8n4wu3kfw" path="res://Game/WaterFall-sheet.png" id="2_t8gqv"]
+[ext_resource type="Texture2D" uid="uid://c3ygrchei8a0g" path="res://Game/Counter.png" id="2_yw6ni"]
+[ext_resource type="Texture2D" uid="uid://dwfnm2hsocyow" path="res://Characters/Creature/Textures/Dwarf.png" id="3_3m77i"]
+[ext_resource type="Texture2D" uid="uid://dqgh8owibrpds" path="res://Ui/Background.png" id="3_hbtj2"]
+[ext_resource type="Texture2D" uid="uid://cec68ox3b7mci" path="res://Characters/Angersprite.png" id="4_mxvu4"]
+[ext_resource type="Theme" uid="uid://dekeeobkykipg" path="res://Themes/Button.tres" id="5_84665"]
+[ext_resource type="Theme" uid="uid://ct3w1dulhwhom" path="res://Themes/Label.tres" id="7_rkhac"]
+[ext_resource type="Texture2D" uid="uid://1qyxn72dcehc" path="res://Game/Bucket.png" id="8_02h28"]
+[ext_resource type="PackedScene" uid="uid://clnbyf64hgt3b" path="res://Ui/install_menu_sounds.tscn" id="9_iwwo5"]
+[ext_resource type="AudioStream" uid="uid://cgbk4hisno501" path="res://Ui/SFX/buttonclick.wav" id="11_t8gqv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7rbfg"]
+atlas = ExtResource("2_t8gqv")
+region = Rect2(0, 0, 320, 0)
 
 [node name="PostRoundMenu" type="Control"]
 process_mode = 2
@@ -17,16 +24,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_wu7fb")
+script = ExtResource("1_5jxg5")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_t7xyf")
+[node name="Waterfall" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("AtlasTexture_7rbfg")
+
+[node name="Wall" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_hbtj2")
 
 [node name="CharacterTexture" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(100, 70)
@@ -37,14 +47,14 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -71.0
-offset_top = -62.0
+offset_top = -39.0
 offset_right = 71.0
-offset_bottom = 8.0
+offset_bottom = 31.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-texture = ExtResource("2_x7bqm")
+texture = ExtResource("3_3m77i")
 
 [node name="ApprovalTexture" type="TextureRect" parent="CharacterTexture"]
 layout_mode = 0
@@ -53,7 +63,22 @@ offset_top = 8.0
 offset_right = 94.0
 offset_bottom = 24.0
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_regel")
+texture = ExtResource("4_mxvu4")
+stretch_mode = 2
+
+[node name="Counter" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -60.0
+offset_right = 160.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_yw6ni")
 stretch_mode = 2
 
 [node name="NextCreatureButton" type="Button" parent="."]
@@ -71,33 +96,9 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 8
 size_flags_vertical = 8
-theme = ExtResource("4_qqwdq")
+theme = ExtResource("5_84665")
 theme_override_font_sizes/font_size = 10
 text = "Next Creature"
-
-[node name="CurrencyTexture" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 292.0
-offset_top = 5.0
-offset_right = 308.0
-offset_bottom = 20.0
-
-[node name="CurrencyAmountLabel" type="Label" parent="CurrencyTexture"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -11.0
-offset_right = 36.0
-offset_bottom = 12.0
-grow_horizontal = 0
-grow_vertical = 2
-theme = ExtResource("6_regel")
-theme_override_font_sizes/font_size = 10
-text = "0"
 
 [node name="BucketTexture" type="TextureRect" parent="."]
 layout_mode = 0
@@ -105,16 +106,18 @@ offset_left = 140.0
 offset_top = 107.0
 offset_right = 180.0
 offset_bottom = 147.0
-texture = ExtResource("4_5ef2e")
+texture = ExtResource("8_02h28")
 
 [node name="PlusLabel" type="Label" parent="BucketTexture"]
 layout_mode = 1
 offset_right = 40.0
 offset_bottom = 23.0
-theme = ExtResource("6_regel")
+theme = ExtResource("7_rkhac")
 theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
 theme_override_font_sizes/font_size = 12
-text = "+2"
+text = "1"
 
 [node name="MinusLabel" type="Label" parent="BucketTexture"]
 layout_mode = 1
@@ -124,16 +127,21 @@ anchor_right = 1.0
 offset_left = -10.0
 offset_bottom = 23.0
 grow_horizontal = 0
-theme = ExtResource("6_regel")
+theme = ExtResource("7_rkhac")
 theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
 theme_override_font_sizes/font_size = 12
-text = "-2"
 
 [node name="BandTexture" type="TextureRect" parent="BucketTexture"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="InstallMenuSounds" parent="." instance=ExtResource("8_vlf6k")]
+[node name="InstallMenuSounds" parent="." instance=ExtResource("9_iwwo5")]
+
+[node name="CountupSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_t8gqv")
+bus = &"SFX"
 
 [connection signal="pressed" from="NextCreatureButton" to="." method="_on_button_pressed"]

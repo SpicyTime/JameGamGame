@@ -1,6 +1,10 @@
 extends CharacterBody2D
 class_name FallingObject
 var data: FallingObjectData = null
+var GRAVITY: float = 980
+
+func increase_fall_deceleration(value: float):
+	GameManager.fall_speed_decel += value
 
 func get_associated_creature_name() -> String:
 	return data.associated_creature
@@ -14,7 +18,7 @@ func setup(curr_data: FallingObjectData):
 
 func _physics_process(delta: float) -> void:
 	if data:
-		velocity.y = 980 * delta * GameManager.fall_speed_accel
+		velocity.y = GRAVITY * delta * GameManager.fall_speed_accel * GameManager.fall_speed_decel
 	if global_position.y > get_viewport_rect().size.y / 2:
 		queue_free()
 	move_and_slide()

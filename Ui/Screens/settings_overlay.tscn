@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://lxi6dbhpg58o"]
+[gd_scene load_steps=6 format=3 uid="uid://lxi6dbhpg58o"]
 
 [ext_resource type="Script" uid="uid://dvrnjjgv85l8e" path="res://Ui/Screens/settings_overlay.gd" id="1_aist2"]
 [ext_resource type="Theme" uid="uid://ct3w1dulhwhom" path="res://Themes/Label.tres" id="2_je73p"]
+[ext_resource type="Theme" uid="uid://bg5aiu47fhsd4" path="res://Ui/Screens/OverlayTheme.tres" id="2_u10ey"]
 [ext_resource type="Theme" uid="uid://dekeeobkykipg" path="res://Themes/Button.tres" id="3_je73p"]
 [ext_resource type="PackedScene" uid="uid://clnbyf64hgt3b" path="res://Ui/install_menu_sounds.tscn" id="4_1ghhv"]
 
@@ -28,6 +29,7 @@ offset_right = 107.0
 offset_bottom = 67.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_u10ey")
 
 [node name="Label" type="Label" parent="Panel"]
 layout_mode = 1
@@ -35,8 +37,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -24.0
+offset_top = 9.0
 offset_right = 24.0
-offset_bottom = 23.0
+offset_bottom = 32.0
 grow_horizontal = 2
 theme = ExtResource("2_je73p")
 text = "Settings"
@@ -101,8 +104,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -15.0
-offset_top = -17.0
+offset_top = -20.0
 offset_right = 15.0
+offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("3_je73p")

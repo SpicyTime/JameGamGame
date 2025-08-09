@@ -5,10 +5,10 @@ var POST_ROUND_MENU = preload("res://Ui/Screens/post_round_menu.tscn").instantia
 var GAME_OVER_MENU = preload("res://Ui/Screens/game_over_menu.tscn").instantiate()
 var MAIN_MENU = preload("res://Ui/Screens/main_menu.tscn").instantiate()
 var GAME = preload("res://Game/game.tscn").instantiate()
-var SHOP_OVERLAY = preload("res://Ui/shop_overlay.tscn").instantiate()
-var HUD_OVERLAY = preload("res://Ui/hud.tscn").instantiate()
+var SHOP_OVERLAY = preload("res://Ui/Overlays/shop_overlay.tscn").instantiate()
+var HUD_OVERLAY = preload("res://Ui/Overlays/hud.tscn").instantiate()
 var PAUSE_OVERLAY = preload("res://Ui/Screens/pause_menu.tscn").instantiate()
-var DEATH_TRANSITION_OVERLAY = preload("res://Ui/death_transition_overlay.tscn").instantiate()
+var DEATH_TRANSITION_OVERLAY = preload("res://Ui/Overlays/death_transition_overlay.tscn").instantiate()
 var SETTINGS_OVERLAY = preload("res://Ui/Screens/settings_overlay.tscn").instantiate()
 
 var screens: Dictionary = {
@@ -69,7 +69,7 @@ func swap_to(screen_name: String) -> void:
 			get_tree().paused = true
 		
 	SignalBus.screen_swapped.emit(active_screen)
-
+	
 func show_overlay(overlay_name: String) -> void:
 	if overlays.has(overlay_name):
 		get_tree().paused = true

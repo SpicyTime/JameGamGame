@@ -27,8 +27,8 @@ func apply_item_effect(item: ShopItem, node: Node):
 				node.increase_filter_chance(item.tier_effects[item.indexed_tier])
 
 		ItemType.ITEM_FALL_SPEED:
-			if node.has_method("slow_item_fall_speed"):
-				node.slow_item_fall_speed(item.tier_effects[item.indexed_tier])
+			if node.has_method("increase_fall_deceleration"):
+				node.increase_fall_deceleration(item.tier_effects[item.indexed_tier])
 
 		ItemType.CREATURE_ERROR_TOLERANCE:
 			if node.has_method("increase_error_tolerance"):
